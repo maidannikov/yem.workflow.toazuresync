@@ -1,0 +1,47 @@
+name: Sync to Azure Blob Storage
+
+on:
+  workflow_call:
+    inputs:
+      storageAccountName:
+        description: 'The name of the Azure Storage account'
+        required: true
+        type: string
+      containerName:
+        description: 'The name of the Azure Blob Storage container'
+        required: true
+        type: string
+      localFolderPath:
+        description: 'The local folder path to sync'
+        required: true
+        type: string
+      tenantId:
+        description: 'Azure tenant ID'
+        required: true
+        type: string
+      clientId:
+        description: 'Azure client ID'
+        required: true
+        type: string
+      clientSecret:
+        description: 'Azure client secret'
+        required: true
+        type: string
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Sync to Azure Blob Storage
+        shell: pwsh
+        run: |
+          ./src/sync-to-azure.ps1 -storageAccountName "${{ inputs.storageAccountName }}" `
+          -containerName "${{ inputs.containerName }}" `
+          -localFolderPath "${{ inputs.localFolderPath }}" `
+          -tenantId "${{ inputs.tenantId }}" `
+          -clientId "${{ inputs.clientId }}" `
+          -clientSecret "${{ inputs.clientSecret }}"
