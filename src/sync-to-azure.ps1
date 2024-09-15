@@ -3,11 +3,10 @@ param (
     [string]$containerName,
     [string]$localFolderPath,
     [string]$tenantId,
-    [string]$clientId, #!!! Only if you are using service principal !!!
-    [string]$clientSecret #!!! Only if you are using service principal !!!
+    [string]$clientId,
+    [string]$clientSecret
 )
 
-#Log in to Azure CLI (Not necessary) !!! Only if you are using service principal !!!
 Write-Output "Loggin in to Azure CLI"
 az login --service-principal -u $clientId -p $clientSecret --tenant $tenantId
 
@@ -31,9 +30,8 @@ Get-ChildItem -Recurse -File -Path $localFolderPath | ForEach-Object {
         --overwrite `
         --no-progress `
         --only-show-errors `
-        --auth-mode login # !!! Only if you are using service principal !!!
+        --auth-mode login
 }
 
-#Log out of Azure CLI(Not necessary) !!! Only if you are using service principal !!!
 Write-Output "Loggin out of Azure CLI"
 az logout
