@@ -23,10 +23,10 @@ on:
         description: 'Azure client ID'
         required: true
         type: string
+    secrets:
       clientSecret:
         description: 'Azure client secret'
         required: true
-        type: string
 
 jobs:
   sync:
@@ -44,4 +44,4 @@ jobs:
           -localFolderPath "${{ inputs.localFolderPath }}" `
           -tenantId "${{ inputs.tenantId }}" `
           -clientId "${{ inputs.clientId }}" `
-          -clientSecret "${{ inputs.clientSecret }}"
+          -clientSecret "${{ secrets.clientSecret }}"
