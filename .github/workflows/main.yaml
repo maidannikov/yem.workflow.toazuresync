@@ -8,9 +8,9 @@ jobs:
   sync-job:
     uses: ./.github/workflows/sync-to-blob.yml
     with:
-      storageAccountName: "newyemsa"
-      containerName: "src"
-      localFolderPath: "src"
-      tenantId: "91700184-c314-4dc9-bb7e-a411df456a1e"
-      clientId: "f0d7cc1a-04bc-4fed-93a8-996e80e1e816"
+      storageAccountName: "your-storage-account-name"
+      containerName: "your-container-name"
+      localFolderPath: "your-local-folder-path"
+      tenantId: "your-tenant-id"
+      clientId: "your-client-id"
       clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
