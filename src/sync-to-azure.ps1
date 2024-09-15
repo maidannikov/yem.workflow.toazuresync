@@ -7,7 +7,7 @@ param (
     [string]$clientSecret
 )
 
-Write-Output "Loggin in to Azure CLI"
+Write-Output "Logging in to Azure CLI"
 az login --service-principal -u $clientId -p $clientSecret --tenant $tenantId
 
 Write-Output "Syncing files from $localFolderPath to Azure Storage Account: $storageAccountName"
@@ -33,5 +33,5 @@ Get-ChildItem -Recurse -File -Path $localFolderPath | ForEach-Object {
         --auth-mode login
 }
 
-Write-Output "Loggin out of Azure CLI"
+Write-Output "Logging out of Azure CLI"
 az logout
