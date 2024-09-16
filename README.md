@@ -37,7 +37,7 @@ on:
 
 jobs:
   sync-job:
-    uses: maidannikov/yem.workflow.toazuresync/.github/workflows/sync-to-blob.yml@main
+    uses: maidannikov/yem.workflow.toazuresync/.github/workflows/sync-to-blob.yml@master
     with:
       storageAccountName: "your-storage-account-name"
       containerName: "your-container-name"
